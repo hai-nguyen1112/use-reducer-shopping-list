@@ -22,6 +22,10 @@ function App() {
         }
     }, [])
 
+    const handleRemoveItem = useCallback(id => {
+        dispatch({type: "remove", id: id})
+    }, [])
+
     return (
         <div style={{padding: "20px"}}>
             <form onSubmit={handleSubmit}>
@@ -35,7 +39,7 @@ function App() {
                 {items.map(item => {
                     return (
                         <li key={item.id}>{item.name} &nbsp;
-                            <button key={item.id} onClick={() => dispatch({type: "remove", id: item.id})}>remove
+                            <button key={item.id} onClick={() => handleRemoveItem(item.id)}>remove
                             </button>
                         </li>
                     )
